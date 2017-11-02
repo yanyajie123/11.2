@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>target</title>
+    <style>
+        body{text-align: center;}
+        input{width: 300px; height: 40px; display: inline-block; margin-top: 10px; padding-left: 5px;}
+        button{width: 100px; height: 35px; margin-top: 10px;}
+    </style>
+    <script src="jquery-1.11.3.js"></script>
+    <script>
+        $(function () {
+            $('button').click(function () {
+                var inp_1=$('#inp_1').val();
+                var inp_2=$('#inp_2').val();
+                $.ajax({
+                    url:'http://localhost:3000/add',
+                    type:'POST',
+                    data:{
+                        name:inp_1,
+                        age:inp_2
+                    },
+                    success:function (e) {
+                        console.log(e)
+                    }
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+<input type="text" placeholder="输入姓名" id="inp_1"><br>
+<input type="text" placeholder="输入年龄" id="inp_2"><br>
+<button>添加</button>
+</body>
+</html>
